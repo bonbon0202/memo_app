@@ -4,9 +4,12 @@ import axios from 'axios';
 import "./Writing.css";
 
 class Writing extends React.Component {
-  state = {
-    title: "",
-    content: ""
+  constructor(props){
+    super(props);
+    this.state = {
+      title: "",
+      content: ""
+    }
   }
 
   handlechange=(e)=>{

@@ -3,6 +3,10 @@ import {Link} from "react-router-dom";
 import "./Main.css";
 import Writing from "../writing/Writing";
 import axios from "axios";
+import NoteOutlinedIcon from '@material-ui/icons/NoteOutlined';
+import {FaBloggerB} from "react-icons/fa";
+import {FaGithub} from "react-icons/fa";
+import {FaInstagram} from "react-icons/fa";
 
 
 class Main extends React.Component {
@@ -17,7 +21,7 @@ class Main extends React.Component {
     return(
       this.state.textList.map((data) =>   //key 값 주기
       
-          <section style={{width: '500px'}}>
+          <section className={"Memo__container"}>
               <header className={"Container_head"}>
                   <div style={{fontSize: "15px"}}>
                       {data.category}
@@ -54,13 +58,14 @@ class Main extends React.Component {
     })
     .then((response)=> {
       console.log('good', response)
+      this.getData();
     })
     .catch((error)=>{
       console.log('err', error)
     })
   }
 
-  componentDidMount(){
+  getData(){
     axios.get('http://localhost:3001/list')
     .then((response)=> {
       this.setState({
@@ -73,15 +78,41 @@ class Main extends React.Component {
     })
   }
 
+
+  componentDidMount(){
+    this.getData();
+  }
+
+  componentDidUpdate(){
+    this.getPostList();
+  }
+
   render() {
     return (
-      <section className={"Memo__Container"}>
-        {this.getPostList()}
-        <Link to="/writing">
-          <button className={"Main__Add_btn"} onClick={Writing}>
+      <section className={"Memo__page"}>
+        <nav className={"Memo__nav"}>
+          <header className={"logo"}>
+            <span>Memo</span>
+          </header>
+          <main>
+           <ul>
+             <li><NoteOutlinedIcon style={{fontSize: 40}}/>note</li>
+           </ul>
+          </main>
+          <footer>
+            <FaGithub />
+            <FaBloggerB />
+            <FaInstagram />
+          </footer>
+        </nav>
+        <main className="Memo__display">
+          {this.getPostList()}
+          <Link to="/writing">
+            <button className={"Main__Add_btn"} onClick={Writing}>
             +
-          </button>
-        </Link>
+            </button>
+          </Link>
+        </main>
       </section>
     );
   }

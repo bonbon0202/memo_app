@@ -7,7 +7,7 @@ const app = express();
 const dataFormat = require('dataformat');
 
 const newDate = new Date();
-const time = dataFormat(new Date(), "yyyy-mm-dd hh:mm:ss");
+const time = dataFormat(new Date(), "yyyy-mm-dd");
 
 app.set('port', process.env.PORT || 3001);
 app.use(cors());

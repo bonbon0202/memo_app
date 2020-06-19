@@ -1,12 +1,14 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import "./Main.css";
+import './Nav.css'
 import Writing from "../writing/Writing";
 import axios from "axios";
-import NoteOutlinedIcon from '@material-ui/icons/NoteOutlined';
+//import NoteOutlinedIcon from '@material-ui/icons/NoteOutlined';
 import {FaBloggerB} from "react-icons/fa";
 import {FaGithub} from "react-icons/fa";
 import {FaInstagram} from "react-icons/fa";
+import {GrNote} from "react-icons/gr"
 
 
 class Main extends React.Component {
@@ -17,25 +19,46 @@ class Main extends React.Component {
     };
   }
 
+  navList = () => {
+    return(
+        <nav className={"Memo__nav"}>
+          <header className={"logo"}>
+            <span>Memo</span>
+          </header>
+          <main>
+           <ul>
+             <li><GrNote style={{fontSize: 35}}/>note</li>
+           </ul>
+          </main>
+          <footer>
+            <FaGithub />
+            <FaBloggerB />
+            <FaInstagram />
+          </footer>
+        </nav>
+    )
+  }
+
   getPostList = () => {
     return(
       this.state.textList.map((data) =>   //key 값 주기
       
           <section className={"Memo__container"}>
-              <header className={"Container_head"}>
-                  <div style={{fontSize: "15px"}}>
-                      {data.category}
-                  </div>
-                  <div style={{fontSize: "15px"}}>
-                      {data.reg_date.split("T")[0]+" " + data.reg_date.split("T")[1].split(".")[0]}
-                  </div>
+              <header className={"Container_header"}>
+                  <span className={"Containner_title"}>
+                   <Link to={"/view/id="+data.id}>
+                        {data.title}
+                   </Link>
+                  </span>
+                  <span className={"Containner_date"}>
+                      {data.reg_date.split("T")[0]}
+                  </span>
               </header>
               <main className={"Container_body"}>
                   <div style={{fontSize: "30px"}}>
-                      <Link to={"/view/id="+data.id}>
-                      {data.title}
-                      </Link>
-                      <button name="delBtn" onClick={(e) => this.deleteMemo(data.id)}><span role="img" aria-label="delete">❌</span></button>
+                      <button className={"deleteBtn"} name="delBtn" onClick={(e) => this.deleteMemo(data.id)} style={{outline: 'none'}}>
+                        <span role="img" aria-label="delete">❌</span>
+                      </button>
                   </div>
                   <div style={{fontSize: "15px"}}>
                       {data.nickname}
@@ -90,21 +113,7 @@ class Main extends React.Component {
   render() {
     return (
       <section className={"Memo__page"}>
-        <nav className={"Memo__nav"}>
-          <header className={"logo"}>
-            <span>Memo</span>
-          </header>
-          <main>
-           <ul>
-             <li><NoteOutlinedIcon style={{fontSize: 40}}/>note</li>
-           </ul>
-          </main>
-          <footer>
-            <FaGithub />
-            <FaBloggerB />
-            <FaInstagram />
-          </footer>
-        </nav>
+        {this.navList()}
         <main className="Memo__display">
           {this.getPostList()}
           <Link to="/writing">

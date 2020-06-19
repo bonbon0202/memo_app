@@ -1,81 +1,71 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700&display=swap');
 
-
-body{
-  display: flex;
-  justify-content: center;
-
-}
-
-.Memo__nav{
-  height: 100vh;
-  width: 250px;
-  background-color: #F2F2F2;
-  padding: 20px;
-  font-size: 3rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  box-sizing: border-box;
-  position: relative;
-}
-
-.Memo__nav header{
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform:translateX(-50%)
-}
-
-.Memo__nav main{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-
-.Memo__nav li{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-}
-
-.Memo__nav footer{
-  font-size: 2rem;
-  position: absolute;
-  bottom: 20px;
-  left: 50%;
-  transform:translateX(-50%);
-  display: flex;
-  justify-content: space-between;
-  width: 80%;
-}
-
-.Memo__page {
-  height: 100vh;
-  width: 100vw;
-  font-family: 'Roboto', sans-serif;
-  display: flex;
-}
-
-.Memo__display{
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
 
 .Memo__container{
   width: 600px;
   height: 100px;
-  margin-bottom: 10px;
-  border-bottom: 1px solid #000000;
+  margin-bottom: 20px;
+  padding:10px;
+  border-bottom: 1px solid #d3d0d0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .Memo__container:hover {
-  transform: translate(0px, 0px);
-  box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
-  0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  animation: float 3s linear infinite forwards;
 }
+
+.Memo__container:hover .deleteBtn{
+  opacity: 1;
+  transition: all ease 1s 0s;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(-10px);
+    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+      0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  }
+  50% {
+    transform: translateY(-20px);
+    box-shadow: 0 13px 27px -80px rgba(50, 50, 93, 0.25),
+      0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  }
+  100% {
+    transform: translateY(-10px);
+    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
+      0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
+  }
+}
+
+.Memo__container .Container_header{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+
+.Memo__container .Containner_title{
+  display: block;
+  font-size: 2rem;
+}
+
+.Containner_title a{
+  text-decoration: none;
+  color: #7e7a7a;
+  font-weight: 900;
+}
+
+.Memo__container .Container_body{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.Container_body .deleteBtn{
+  outline: none;
+  opacity: 0;
+}
+
+

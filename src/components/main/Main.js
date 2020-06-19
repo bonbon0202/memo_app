@@ -27,7 +27,7 @@ class Main extends React.Component {
           </header>
           <main>
            <ul>
-             <li><GrNote style={{fontSize: 35}}/>note</li>
+             <li><GrNote style={{fontSize: 35, marginRight: 10}}/>note</li>
            </ul>
           </main>
           <footer>
@@ -56,7 +56,7 @@ class Main extends React.Component {
               </header>
               <main className={"Container_body"}>
                   <div style={{fontSize: "30px"}}>
-                      <button className={"deleteBtn"} name="delBtn" onClick={(e) => this.deleteMemo(data.id)} style={{outline: 'none'}}>
+                      <button className={"Container_deleteBtn"} name="delBtn" onClick={(e) => this.deleteMemo(data.id)}>
                         <span role="img" aria-label="delete">❌</span>
                       </button>
                   </div>
@@ -118,7 +118,7 @@ class Main extends React.Component {
           {this.getPostList()}
           <Link to="/writing">
             <button className={"Main__Add_btn"} onClick={Writing}>
-            +
+            add
             </button>
           </Link>
         </main>

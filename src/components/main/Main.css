@@ -14,7 +14,7 @@
   animation: float 3s linear infinite forwards;
 }
 
-.Memo__container:hover .deleteBtn{
+.Memo__container:hover .Container_deleteBtn{
   opacity: 1;
   transition: all ease 1s 0s;
 }
@@ -52,7 +52,7 @@
 
 .Containner_title a{
   text-decoration: none;
-  color: #7e7a7a;
+  color: #44819A;
   font-weight: 900;
 }
 
@@ -63,9 +63,27 @@
   align-items: flex-end;
 }
 
-.Container_body .deleteBtn{
-  outline: none;
+.Container_body .Container_deleteBtn{
+  border: none;
+  background: none;
   opacity: 0;
+  cursor: pointer;
 }
 
+.Main__Add_btn{
+  text-decoration: none;
+  outline: none;
+  background: #505B6A;
+  border-radius: 50%;
+  border: none;
+  height: 50px;
+  width: 50px;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 10px;
+}
 
+.Main__Add_btn:active {
+  transform: scale(0.95);
+}

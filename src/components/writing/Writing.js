@@ -46,16 +46,16 @@ class Writing extends React.Component {
           onChange={this.handlechange}
           value={this.state.title}
         />
-        <label for="content">Tell us your story:</label>
+        <label className="content_label" for="content">오늘의 메모:</label>
 
         <textarea id="content" name="content" className="pad_content" placeholder="내용을 입력하세요"
           onChange={this.handlechange}
           value={this.state.content}
-          rows="5" cols="33" >
+          rows="50" >
         </textarea>
         <Link to="/">
-        <button className="addBtn" onClick={this.createMemo}>
-          추가
+        <button className="pad_addBtn" onClick={this.createMemo}>
+          post
         </button>
         </Link>
       </form>

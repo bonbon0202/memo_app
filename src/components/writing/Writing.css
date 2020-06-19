@@ -1,7 +1,59 @@
-.Writing__pad {
-  height: 700px;
-  width: 800px;
+.Writing__pad  {
+  height: 600px;
+  width: 700px;
   border: 1px solid #d3d0d0;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 
+.Writing__pad input,
+.Writing__pad textarea{
+  opacity: 0.7;
+  padding: .5em 0;
+  outline: none;
+  border: none;
+}
+
+.Writing__pad .pad_title{
+  height: 30px;
+  width: 500px;
+  outline: none;
+  border-bottom: 1px solid #d3d0d0;
+  text-decoration: none;
+  font-size: 30px;
+  font-weight: 900;
+}
+
+.Writing__pad .content_label{
+  margin-top: 20px;
+  margin-bottom: 10px;
+  text-align: start;
+  color: #44819A;
+  font-weight: 800;
+}
+
+.Writing__pad .pad_content{
+ 
+
+}
+
+
+.Writing__pad .pad_addBtn{
+  text-decoration: none;
+  outline: none;
+  background: #505B6A;
+  border-radius: 50%;
+  border: none;
+  height: 50px;
+  width: 50px;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.Writing__pad .pad_addBtn:active {
+  transform: scale(0.95);
+}

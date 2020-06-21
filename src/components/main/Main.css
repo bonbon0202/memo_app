@@ -68,6 +68,7 @@
   background: none;
   opacity: 0;
   cursor: pointer;
+  outline: none;
 }
 
 .Main__Add_btn{

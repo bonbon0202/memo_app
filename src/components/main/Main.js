@@ -1,14 +1,11 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import "./Main.css";
-import './Nav.css'
-import Writing from "../writing/Writing";
+import { Route } from 'react-router-dom';
 import axios from "axios";
-//import NoteOutlinedIcon from '@material-ui/icons/NoteOutlined';
-import {FaBloggerB} from "react-icons/fa";
-import {FaGithub} from "react-icons/fa";
-import {FaInstagram} from "react-icons/fa";
-import {GrNote} from "react-icons/gr"
+import "./Main.css";
+import Writing from "../writing/Writing";
+import Nav from "../nav/Nav";
+import ViewMemo from "../viewmemo/ViewMemo";
 
 
 class Main extends React.Component {
@@ -19,26 +16,6 @@ class Main extends React.Component {
     };
   }
 
-  navList = () => {
-    return(
-        <nav className={"Memo__nav"}>
-          <header className={"logo"}>
-            <span>Memo</span>
-          </header>
-          <main>
-           <ul>
-             <li><GrNote style={{fontSize: 35, marginRight: 10}}/>note</li>
-           </ul>
-          </main>
-          <footer>
-            <FaGithub />
-            <FaBloggerB />
-            <FaInstagram />
-          </footer>
-        </nav>
-    )
-  }
-
   getPostList = () => {
     return(
       this.state.textList.map((data) =>   //key 값 주기
@@ -46,7 +23,10 @@ class Main extends React.Component {
           <section className={"Memo__container"}>
               <header className={"Container_header"}>
                   <span className={"Containner_title"}>
-                   <Link to={"/view/id="+data.id}>
+                   <Link to={{pathname: "/view/id="+data.id,
+                    state: {
+                      id: data.id
+                    }}} >
                         {data.title}
                    </Link>
                   </span>
@@ -113,7 +93,7 @@ class Main extends React.Component {
   render() {
     return (
       <section className={"Memo__page"}>
-        {this.navList()}
+        <Nav />
         <main className="Memo__display">
           {this.getPostList()}
           <Link to="/writing">
@@ -122,6 +102,8 @@ class Main extends React.Component {
             </button>
           </Link>
         </main>
+        <Route path="/writing" component={Writing} />
+        <Route path="{'/view/id='+data.id}" component={ViewMemo} />
       </section>
     );
   }
